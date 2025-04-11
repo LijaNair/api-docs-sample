@@ -1,0 +1,143 @@
+openapi: '3.0.3'
+info:
+  title: Reqres APIs
+  description: |-
+    ThisReqres APIs are fake APIs that you can test and practise. Some useful links 
+    - [Reqres Website](https://reqres.in/)
+  version: '1.0'
+servers:
+  - url: https://reqres.in/api
+tags:
+  - name: users
+    description: List of users
+paths:
+  /users:
+    get:
+      summary: Gets the list the users
+      description: Retrieves a paginated list of users from the ReqRes API.
+      tags:
+        - users
+      parameters:
+        - name: page
+          in: query
+          description: page number           
+          required: false          
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+        - name: searchbyName
+          in: query
+          description: search by name
+          required: true   
+          schema:
+            type: string             
+            example: george
+      responses:
+        "200":
+          description: Success 
+        "404":
+          description: Nothing Found        
+
+  /users/{id}:
+    get:
+      summary: Get user details by ID
+      description: Retrieves a specfic user details
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: path
+          description: enter the id
+          required: true
+          schema:            
+            type: integer
+            minimum: 1
+            maximum: 100
+            example: 2  
+      responses:
+        "200":
+          description: success
+        "404":  
+          description: No match found
+
+    put:
+     summary: Updates user detail
+     tags:
+      - users
+     parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+         type: integer
+     
+     requestBody:
+        description: update the user details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first name: 
+                  type: string
+                last name:
+                  type: string  
+     responses:  
+       "200":
+          description: success        
+
+  /register:
+    post:
+      summary: Register a new user
+      description: A new user is regstered.
+      requestBody:
+       content:
+         application/json: 
+            schema:
+              $ref: "#/components/schemas/users"
+      responses:
+        "200":
+          description: successfully user registered
+          content:
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/users"
+                       
+  /unknown:
+    get:
+      summary: Get a list of resources
+      tags:
+        - users
+      responses:
+        "200":  
+          description: success  
+
+
+components:
+  schemas:
+   users: 
+      type: object
+      properties:
+        firstname:
+          type: string
+          example: John
+        lastname:
+          type: string
+          example: samuel
+        emailId:
+          type: string
+          example: abc@gmail.com
+    
+    
+          
+          
+            
+
+ 
+  
+
+
+
+  
