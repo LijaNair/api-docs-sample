@@ -17,9 +17,9 @@ This is a fully documented Postman Collection that simulates a Task Management A
 
 ## How to Use
 1. **Clone this repo**:
----------
+```
 git clone https://github.com/yourusername/task-management-api-postman.git
----------
+```
 2. **Open Postman** and import:
 - `task_management_api_portfolio.postman_collection.json`
 
